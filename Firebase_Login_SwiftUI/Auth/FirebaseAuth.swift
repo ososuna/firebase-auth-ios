@@ -70,7 +70,7 @@ class UserAuth: ObservableObject {
     func signUp(
         email: String,
         password: String,
-        handler: @escaping AuthDataResultCallback
+        handler: @escaping(AuthDataResult?, Error?) -> Void
     ) {
         Auth.auth().createUser(withEmail: email, password: password, completion: handler)
     }
@@ -78,7 +78,7 @@ class UserAuth: ObservableObject {
     func signIn(
         email: String,
         password: String,
-        handler: @escaping AuthDataResultCallback
+        handler: @escaping(AuthDataResult?, Error?) -> Void
     ) {
         
         Auth.auth().signIn(withEmail: email, password: password, completion: handler)
